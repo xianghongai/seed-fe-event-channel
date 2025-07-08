@@ -1,7 +1,7 @@
 {
   "name": "@seed-fe/event-channel",
   "version": "1.0.0",
-  "description": "事件总线",
+  "description": "A powerful event channel for modern web development",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -13,6 +13,7 @@
       "require": "./dist/index.cjs"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist",
     "README.md",
@@ -23,6 +24,9 @@
     "check": "biome check --write",
     "format": "biome format --write",
     "build": "tsup",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run test && npm run build",
     "test": "vitest run"
   },
   "keywords": [
@@ -48,10 +52,9 @@
     "url": "https://github.com/xianghongai/seed-fe-event-channel/issues"
   },
   "homepage": "https://github.com/xianghongai/seed-fe-event-channel#readme",
-  "packageManager": "pnpm@^10.6.5",
+  "packageManager": "pnpm@10.6.5",
   "dependencies": {
-    "eventemitter2": "^6.4.9",
-    "minimatch": "^10.0.3"
+    "eventemitter2": "^6.4.9"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",

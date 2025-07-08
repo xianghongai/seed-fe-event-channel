@@ -3,7 +3,7 @@
  * @description 提供受保护事件的注册、注销、查询等功能
  */
 
-import type { EventFilter, ProtectedEventInfo, ProtectedEventMeta } from './type';
+import type { ProtectedEventInfo, ProtectedEventMeta } from './type';
 
 /**
  * 受保护事件集合，key为symbol，value为元数据及事件名
@@ -11,9 +11,9 @@ import type { EventFilter, ProtectedEventInfo, ProtectedEventMeta } from './type
 const protectedEvents = new Map<symbol, { name: string; meta: ProtectedEventMeta }>();
 
 /**
- * 注册受保护事件（支持 group/namespace）
+ * 注册受保护事件
  * @param name 事件名
- * @param meta 可选元数据（可含 group/namespace）
+ * @param meta 可选元数据
  * @returns symbol 事件唯一标识
  */
 export function registerProtectedEvent(name: string, meta: ProtectedEventMeta = {}): symbol {
@@ -50,17 +50,9 @@ export function isProtectedEvent(sym: symbol): boolean {
 }
 
 /**
- * 获取所有已注册的受保护事件列表，可选按 group/namespace 过滤
- * @param filter 可选过滤条件 { group?: string, namespace?: string }
+ * 获取所有已注册的受保护事件列表
  * @returns 受保护事件信息数组
  */
-export function listProtectedEvents(filter?: EventFilter): ProtectedEventInfo[] {
-  let arr = Array.from(protectedEvents.entries()).map(([symbol, { name, meta }]) => ({ symbol, name, meta }));
-  if (filter?.group) {
-    arr = arr.filter((e) => e.meta.group === filter.group);
-  }
-  if (filter?.namespace) {
-    arr = arr.filter((e) => e.meta.namespace === filter.namespace);
-  }
-  return arr;
+export function listProtectedEvents(): ProtectedEventInfo[] {
+  return Array.from(protectedEvents.entries()).map(([symbol, { name, meta }]) => ({ symbol, name, meta }));
 }

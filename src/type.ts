@@ -56,23 +56,10 @@ export interface ProtectedEventMeta {
    */
   description?: string;
   /**
-   * 事件分组
-   */
-  group?: string;
-  /**
-   * 事件命名空间
-   */
-  namespace?: string;
-  /**
    * 其他自定义元数据
    */
   [key: string]: unknown;
 }
-
-/**
- * 事件分发策略类型
- */
-export type EventDispatchStrategy = 'parallel' | 'waterfall' | 'series';
 
 /**
  * 受保护事件信息
@@ -82,19 +69,6 @@ export type ProtectedEventInfo = {
   name: string;
   meta: ProtectedEventMeta;
 };
-
-/**
- * 事件过滤条件
- */
-export type EventFilter = {
-  group?: string;
-  namespace?: string;
-};
-
-/**
- * 事件处理函数类型
- */
-export type EventHandler = (event: symbol, ...args: unknown[]) => void;
 
 /**
  * 事件处理结果

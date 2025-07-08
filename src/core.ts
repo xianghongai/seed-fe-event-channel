@@ -6,7 +6,8 @@
 import { EventEmitter2, type event, type ListenerFn } from 'eventemitter2';
 import { isProtectedEvent } from './protected-events';
 import type { EventChannel } from './type';
-import { MAX_LISTENERS } from './utils';
+
+const MAX_LISTENERS = 999;
 
 /**
  * 创建一个新的事件通道实例
