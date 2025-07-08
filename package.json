@@ -1,0 +1,73 @@
+{
+  "name": "@seed-fe/event-channel",
+  "version": "1.0.0",
+  "description": "事件总线",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "check": "biome check --write",
+    "format": "biome format --write",
+    "build": "tsup",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "event",
+    "event-channel",
+    "event-bus",
+    "event-emitter",
+    "emitter",
+    "eventemitter",
+    "addEventListener",
+    "publish",
+    "subscribe",
+    "emit",
+    "pubsub"
+  ],
+  "author": "xianghongai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xianghongai/seed-fe-event-channel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xianghongai/seed-fe-event-channel/issues"
+  },
+  "homepage": "https://github.com/xianghongai/seed-fe-event-channel#readme",
+  "packageManager": "pnpm@^10.6.5",
+  "dependencies": {
+    "eventemitter2": "^6.4.9",
+    "minimatch": "^10.0.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
